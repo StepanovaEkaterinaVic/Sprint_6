@@ -36,6 +36,14 @@ class OrderPage(BasePage):
     def view_status_modal(self):
         self.click_on_element(OrderPageLocators.VIEW_STATUS_BUTTON)
 
+    @allure.step('Нажать на кнопку "Заказать" на экране "Про аренду"')
+    def click_on_order_button(self):
+        self.click_on_element(OrderPageLocators.ORDER_BUTTON_FIN)
+
+    @allure.step('Нажать на кнопку "Да" в окне "Вы хотите оформить заказ?"')
+    def click_on_yes_button(self):
+        self.click_on_element(OrderPageLocators.ORDER_YES_BUTTON)
+
     @allure.step('Переход на главную страницу при клике на логотип самоката')
     def go_to_the_main_page(self):
         self.click_on_element(OrderPageLocators.SCOOTER_LOGO)
@@ -49,14 +57,13 @@ class OrderPage(BasePage):
         actual_url = self.driver.current_url
         return actual_url == expected_url
 
-    @allure.step("Подождать и сравни полученный и ожидаемый URL страницы")
-    def wait_for_url(self, expected_url, timeout=10):
-        return WebDriverWait(self.driver, timeout).until(EC.url_to_be(expected_url))
+    @allure.step("Подождать URL страницы")
+    def wait_url(self, expected_url):
+        self.wait_for_url(expected_url)
 
     @allure.step("Получить URL страницы в новом окне")
     def get_new_window_url(self):
         self.wait_and_switch_to_new_window()
         self.wait_for_url(dzen_page)
-
 
 
