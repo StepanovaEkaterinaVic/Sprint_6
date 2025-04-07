@@ -38,7 +38,6 @@ class BasePage:
         self.driver.switch_to.window(self.driver.window_handles[-1])
         return self.driver.current_window_handle
 
-
-
-
-
+    @allure.step("Подождать и сравнить полученный и ожидаемый URL страницы")
+    def wait_for_url(self, expected_url, timeout=10):
+        return WebDriverWait(self.driver, timeout).until(EC.url_to_be(expected_url))
