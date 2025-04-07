@@ -19,8 +19,8 @@ class TestOrder:
         order_page = OrderPage(driver)
         order_page.fill_form_1()
         order_page.fill_form_2()
-        main_page.click_on_element(OrderPageLocators.ORDER_BUTTON_FIN)
-        main_page.click_on_element(OrderPageLocators.ORDER_YES_BUTTON)
+        order_page.click_on_order_button()
+        order_page.click_on_yes_button()
         assert order_page.success_order_modal()
 
         order_page.view_status_modal()
@@ -40,8 +40,8 @@ class TestOrder:
         order_page = OrderPage(driver)
         order_page.fill_form_1()
         order_page.fill_form_2()
-        main_page.click_on_element(OrderPageLocators.ORDER_BUTTON_FIN)
-        main_page.click_on_element(OrderPageLocators.ORDER_YES_BUTTON)
+        order_page.click_on_order_button()
+        order_page.click_on_yes_button()
         assert order_page.success_order_modal()
 
         order_page.view_status_modal()
